@@ -4,11 +4,23 @@ import Popup from "reactjs-popup";
 import './login.css';
 
 class login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+            islogin: false
+        }
+    }
+    loginClick(e) {
 
-    loginClick() {
-        console.log('clicked login');
-        console.log('this is:', this);
 
+        this.setState({
+            username: e.target.value,
+            password: e.target.value,
+            islogin: true
+
+        });
         fetch("https://api.example.com/items")
             .then(res => res.json())
             .then(
@@ -30,22 +42,26 @@ class login extends Component {
             )
     }
 
-    render() {
-        return (
-            <div className="loginBox">
-                <div>
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required />
+    // console.log("this"+this)
+}
 
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required />
 
-                    <button onClick={(e) => this.loginClick(e)}>Login</button>
-                    <label><input type="checkbox" name="remember" /> Remember me</label>
-                </div>                
+render() {
+    return (
+        <div className="loginBox">
+            <div>
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" onBlur={({ target }) => this.setState({ username: target.value })} required />
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" onBlur={({ target }) => this.setState({ password: target.value })} required />
+
+                <button onClick={(e) => this.loginClick(e)}>Login</button>
+                <label><input type="checkbox" name="remember" /> Remember me</label>
             </div>
-        );
-    }
+        </div>
+    );
+}
 }
 
 export default login;

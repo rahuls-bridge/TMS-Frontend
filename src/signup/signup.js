@@ -58,7 +58,7 @@ class signup extends Component {
                     <button type="submit" className="signupbtn">Sign Up</button> */}
                         <ul>
                             <li><Link to={'/'} className="cancelbtn">Cancel</Link></li>
-                            <button type="submit" className="signupbtn" onClick={(e) => this.signupClick(e)}>Sign Up</button>
+                          <li>  <button type="submit" className="signupbtn" onClick={(e) => this.signupClick(e)}>Sign Up</button></li>
                         </ul>
                     </div>
                 </nav>

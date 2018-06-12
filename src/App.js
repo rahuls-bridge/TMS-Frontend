@@ -8,7 +8,14 @@ import forgotPassword from './forgotPassword/forgotPassword'
 import Request from 'superagent'
 
 class App extends Component {
+  constructor() {
+		super();
+		this.state = {
+			shown: true,
+		};
+	}	
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -18,7 +25,7 @@ class App extends Component {
         <Router>
           <div>
             <ul>
-              <li><Link to={'/'}>login</Link></li>
+              <li><Link to={'/'} >login</Link></li>
               <li><Link to={'/Signup'}>Signup</Link></li>
             </ul>
             <hr />
